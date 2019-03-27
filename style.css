@@ -1,0 +1,53 @@
+html , body { height: 100%; }
+
+body
+{
+    background: #1E1E1E;
+    color: #D4D4D4;
+    margin: 0;
+    padding: 0;
+}
+
+.topbar
+{
+    min-height: 35px;
+    background: #2F2F2F;
+}
+
+#topbar
+{
+    height: 36px;
+    border-bottom: 2px solid rgb(189, 13, 13);
+}
+
+#wrapper
+{
+    height: 100%;
+}
+
+#wrapper > div
+{
+    display: block;
+    width: 100%;
+}
+
+#chat_window
+{
+    height: 100%;
+}
+
+#chat_box
+{
+    position: fixed;
+    height: 50px;
+    bottom: 0;
+}
+
+#chat_text_box
+{
+    height: 100%;
+    display: block;
+}
+
+.chat_input { height: 100%; }
+.chat_submit{ height: 100%; }
