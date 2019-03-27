@@ -49,5 +49,9 @@ body
     display: block;
 }
 
-.chat_input { height: 100%; }
+.chat_input
+{
+    height: 100%;
+    font-size: 18px;
+}
 .chat_submit{ height: 100%; }

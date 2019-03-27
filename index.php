@@ -1,5 +1,5 @@
 <?php
-
+    // Początek pliku HTML
     echo '
 <!DOCTYPE html>
 <html>
@@ -9,21 +9,43 @@
         <meta charset="UTF-8">
         <title>Czat</title>
     </head>
-    <body>
-        <div id="topbar">
-            <a href="#" class="tbb_home"><i class="fa fa-home"></i></a>
-        </div>
+    <body>';
 
-        <div id="wrapper">
-            <div id="chat_window">
-            </div>
-            <div id="chat_box">
-                <form id="chat_text_box">
-                    <input class="chat_input" type="text" name="chattext">
-                    <input class="chat_submit" type="submit" name="chatbtn" value="Wyślij">
-                </form>
-            </div>
-        </div>
+    // Tworzenie połączenia z bazą danych
+    $self       = $_SERVER['php_self'];
+    $address    = $_SERVER[REMOTE_ADDR];
+
+    include('src/db.php');
+
+    $db_svr = mysql_connect($db_host , $db_user , $db_passwd) or die('<p class="error">DB Connection Error!</p>');
+    mysql_select_db($db_name , $db_svr) or die('<p class="error">DB Select Error!</p>');
+
+    if (isset($_POST['send']))
+    {
+        if (empty($_POST['name']) || empty($_POST['message']))
+        {
+            echo
+        '<script>alert("Pola formularza nie mogą być puste!")</script>';
+        }
+        else
+        {
+            $user = htmlspecialchars(mysql_real_escape_string($_POST['name']));
+            $text = htmlspecialchars(mysql_real_escape_string($_POST['message']));
+
+            if (!@mysql_query('INSERT INTO messages SET uname=\'' , $user , '\', message=\'', $text , '\', timestamp=NOW()'))
+            {
+                echo
+        '<script>alert("Nie można wysłać wiadomości!")</script>';
+            }
+
+        }
+    }
+    else
+    {
+    }
+
+    // Koniec pliku HTML
+    echo '
     </body>
 </html>
     ';
