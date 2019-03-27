@@ -10,9 +10,10 @@
             PRIMARY KEY(msg_id)    
         );
     */
-    
+
     $db_host        = "localhost";
     $db_name        = "ci_test";
+    $db_tab         = "messages";
     $db_user        = "root";
     $db_passwd      = "";
 ?>
