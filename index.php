@@ -13,14 +13,15 @@
 
     // Dodanie formularza
     echo '
-        <form method="POST" action="' , $self , '">
-            <p>Twoja nazwa:</p><br/>
-            <input name="name" type="text" cols="25"/>
-            <p>Wiadomość:</p><br/>
-            <textarea name="txt" rows=5 cols="25"></textarea>
-            <input name="send" type="hidden"/></br>
-            <input type="submit" value="Wyślij!"/>
-        </form>
+        <div id="container">
+            <form method="POST" action="' , $self , '">
+                <p>Twoja nazwa:</p><br/>
+                <input name="name" type="text" cols="25"/>
+                <p>Wiadomość:</p><br/>
+                <input type="text" name="txt"cols="25"></textarea>
+                <input name="send" type="hidden"/></br>
+                <input type="submit" value="Wyślij!"/>
+            </form>
         ';
 
     include('src/db.php');
@@ -35,8 +36,8 @@
         // Pusty formularz
         if (empty($_POST['name']) || empty($_POST['txt']))
         {
-            echo
-        '<p class="error">Pola formularza nie mogą być puste!</p>';
+            echo'
+            <p class="error">Pola formularza nie mogą być puste!</p>';
         }
 
         // Wysyłanie wiadomości na serwer
@@ -47,8 +48,8 @@
 
             if (!$mysqli->query('INSERT INTO ' . $db_tab . ' SET uname=\'' . $user . '\', message=\''. $text . '\', timestamp=NOW();'))
             {
-                echo
-         '<p class="error">Nie wysłano wiadomości!</p>';
+                echo '
+            <p class="error">Nie wysłano wiadomości!</p>';
             }
 
         }
@@ -58,7 +59,7 @@
     $result = $mysqli->query('SELECT * FROM ' . $db_tab . ' ORDER BY msg_id DESC LIMIT 50;');
 
     echo '
-        <ul>';
+            <ul class="msg_box">';
 
     // Przetwarzanie wyniku
     while ($tmp = $result->fetch_array())
@@ -68,12 +69,12 @@
 
         // Dodawanie wiadomości
         echo '
-            <li>
-                <span>#' , $tmp['msg_id'] , '</span>
-                <span>' , $res_name , '</span>
-                <span>' , $tmp['timestamp'] , '</span>
-                <span>' , $tmp['message'] , '</span>
-            </li>
+                <li>
+                    <span>#' , $tmp['msg_id'] , '</span>
+                    <span>' , $res_name , '</span>
+                    <span>' , $tmp['timestamp'] , '</span>
+                    <span>' , $tmp['message'] , '</span>
+                </li>
             ';
     }
 
@@ -82,6 +83,7 @@
 
 ?>
 
-        </ul>
+            </ul>
+</div>
     </body>
 </html>
