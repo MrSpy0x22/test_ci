@@ -9,17 +9,17 @@
     <body>
 <?php
     // Tworzenie połączenia z bazą danych
-    $self = $_SERVER['PHP_SELF'];
+    $self = htmlspecialchars($_SERVER['PHP_SELF']);
 
     // Dodanie formularza
     echo '
         <div id="container">
-            <form method="POST" action="' , $self , '">
-                <p>Twoja nazwa:</p><br/>
-                <input name="name" type="text" cols="25"/>
-                <p>Wiadomość:</p><br/>
-                <input type="text" name="txt"cols="25"></textarea>
-                <input name="send" type="hidden"/></br>
+            <form id="post_form" method="POST" action="' , $self , '">
+                <p>Twoja nazwa:</p>
+                <input id="i-usr" name="name" type="text" cols="25"/></br>
+                <p>Wiadomość:</p>
+                <input id="i-msg" type="text" name="txt"cols="25"></textarea>
+                <input  name="send" type="hidden"/></br>
                 <input type="submit" value="Wyślij!"/>
             </form>
         ';
@@ -51,7 +51,8 @@
                 echo '
             <p class="error">Nie wysłano wiadomości!</p>';
             }
-
+            
+            header('Location: ' . $self);
         }
     }
 
@@ -70,9 +71,9 @@
         // Dodawanie wiadomości
         echo '
                 <li>
-                    <span>#' , $tmp['msg_id'] , '</span>
-                    <span>' , $res_name , '</span>
-                    <span>' , $tmp['timestamp'] , '</span>
+                    <span class="c-id">#' , $tmp['msg_id'] , '</span>
+                    <span class="c-time">' , $tmp['timestamp'] , '</span>
+                    <span class="c-name">' , $res_name , ': </span>
                     <span>' , $tmp['message'] , '</span>
                 </li>
             ';
