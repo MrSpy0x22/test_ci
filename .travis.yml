@@ -5,7 +5,7 @@ php:
 services:
   - mysql
 script:
-  - sudo apt-get install git -Y
+  - sudo apt-get install git -y
   - cd ~
   - git clone https://github.com/MrSpy0x22/test_ci.git
   - cd test_ci
