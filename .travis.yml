@@ -13,14 +13,14 @@ script:
   - mysql -u root ci_test < prepare_mysql.sql
   - php -l index.php
 after_success:
-  - git branch -b temp
+  - git checkout production
+  - git merge master
   - git rm README.md
   - git rm .travis.yml
   - git rm prepare_mysql.sql
   - git add *
   - git commit -m "production"
-  - git push origin production:temp
-  - git branch -d temp
+  - git push
 branches:
   only:
     - master
