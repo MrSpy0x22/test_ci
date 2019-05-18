@@ -1,10 +1,13 @@
-sudo?: required
 language: php
 php:
   - 7.0
 script:
-  - sudo apt-get update
-  - sudo apt-get upgrade
+  - apt-get update
+  - apt-get upgrade
+  - apt-get install git -U
+  - cd ~
+  - git clone https://github.com/MrSpy0x22/test_ci.git
+  - cd test_ci
 branches:
   only:
   - master
