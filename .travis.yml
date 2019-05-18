@@ -1,10 +1,13 @@
+dist: xenial
 language: php
 php:
   - 7.0
+services:
+  - mysql
 script:
-  - apt-get update
-  - apt-get upgrade
-  - apt-get install git -U
+  - sudo apt-get update
+  - sudo apt-get upgrade
+  - sudo apt-get install git -U
   - cd ~
   - git clone https://github.com/MrSpy0x22/test_ci.git
   - cd test_ci
