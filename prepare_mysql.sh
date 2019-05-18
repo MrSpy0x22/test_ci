@@ -8,9 +8,6 @@ _passwd=$3
 if [ $# -lt "3" ] | [ $# -gt "3" ]; then
 	echo Liczba parametrow sie nie zgadza\!
 	exit 1
-elif [ -z $1 ] & [ -z $2 ] & [ -z $1 ]; then
-	echo Nie przekazano prawidlowych stringow\!
-	exit 1
 fi
 
 # Tworzenie bazy danych
