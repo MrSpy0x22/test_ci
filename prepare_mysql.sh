@@ -7,9 +7,7 @@ if [ $# -lt "3" ] | [ $# -gt "3" ]; then
 fi
 
 # test parametrów
-echo '$1 = ' $1
-echo '$2 = ' $2
-echo '$3 = ' $3
+echo $@
 
 # Tworzenie bazy danych
 if mysql -e "CREATE TABLE IF NOT EXISTS $1;"; then
@@ -27,5 +25,8 @@ else
 	echo Nie udalo sie utworzyc bazy danych\!
 	exit 1
 fi 
+
+# denerowanie pliku ustawień db.php
+
 
 exit 2
