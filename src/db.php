@@ -15,5 +15,5 @@
     $db_name        = "ci_test";
     $db_tab         = "messages";
     $db_user        = "test_ci";
-    $db_passwd      = "adgjl08642/;]";
+    $db_passwd      = "adgjl0864264";
 ?>
