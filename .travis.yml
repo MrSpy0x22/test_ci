@@ -16,6 +16,6 @@ branches:
   only:
     - master
 env:
-  - DB_PASSWD="[seecure]"
-  - DB_USER="test_ci"
-  - DB_NAME="ci_test"
+  - DB_PASSWD=adgjl0864264
+  - DB_USER=test_ci
+  - DB_NAME=ci_test
