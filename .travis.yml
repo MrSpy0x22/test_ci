@@ -14,7 +14,7 @@ script:
   - git clone https://github.com/MrSpy0x22/test_ci.git
   - cd test_ci
   - sudo chmod 777 prepare_mysql.sh
-  - ./prepare_mysql.sh "$DB_NAME" "$DB_USER" "$DB_PASSWD"
+  - ./prepare_mysql.sh $DB_NAME $DB_USER $DB_PASSWD
   - php -l index.php
 branches:
   only:
