@@ -18,7 +18,7 @@ branches:
     - master
 env:
   - DB_PASSWD="[seecure]"
-  - DB_NAME="[seecure]"
-  - DB_NAME="[seecure]"
+  - DB_USER="test_ci"
+  - DB_NAME="ci_test"
 notifications:
   email: false
