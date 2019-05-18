@@ -15,6 +15,10 @@ script:
   - php -l index.php
 branches:
   only:
-  - master
+    - master
+env:
+  - DB_PASSWD=*
+  - DB_NAME=*
+  - DB_NAME=*
 notifications:
   email: false
