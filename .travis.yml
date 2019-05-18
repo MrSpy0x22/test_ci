@@ -22,7 +22,7 @@ after_success:
   - git rm prepare_mysql.sql
   - git add *
   - git commit -m "production"
-  - git push
+  - git push origin production
 branches:
   only:
     - master
