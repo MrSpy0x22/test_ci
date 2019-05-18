@@ -12,6 +12,12 @@ script:
   - mysql -e "CREATE DATABASE ci_test"
   - mysql -u root ci_test < prepare_mysql.sql
   - php -l index.php
+after_success:
+  - git rm .travis.yml
+  - git rm prepare_mysql.sql
+  - git commit -m "..."
+  - git push origin production:master
+  - git checkout production 
 branches:
   only:
     - master
