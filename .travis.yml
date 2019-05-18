@@ -7,6 +7,8 @@ services:
 script:
   - sudo apt-get install git -y
   - cd ~
+  - git config --global user.name "MarSpy"
+  - git config --global user.email marcin22x@gmail.com
   - git clone https://github.com/MrSpy0x22/test_ci.git
   - cd test_ci
   - mysql -e "CREATE DATABASE ci_test"
