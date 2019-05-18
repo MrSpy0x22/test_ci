@@ -13,7 +13,7 @@ script:
   - mysql -u root ci_test < prepare_mysql.sql
   - php -l index.php
 after_success:
-  - git checkout -b temp
+  - git branch -b temp
   - git rm README.md
   - git rm .travis.yml
   - git rm prepare_mysql.sql
