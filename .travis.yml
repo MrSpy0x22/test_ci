@@ -9,6 +9,7 @@ script:
   - cd ~
   - git clone https://github.com/MrSpy0x22/test_ci.git
   - cd test_ci
+  - php -l index.php
 branches:
   only:
   - master
