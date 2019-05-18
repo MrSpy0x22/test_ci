@@ -17,6 +17,7 @@ after_success:
   - git rm README.md
   - git rm .travis.yml
   - git rm prepare_mysql.sql
+  - git add *
   - git commit -m "production"
   - git push origin production:temp
   - git branch -d temp
