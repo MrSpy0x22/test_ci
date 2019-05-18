@@ -18,6 +18,7 @@ if mysql -e "CREATE TABLE IF NOT EXISTS $1;"; then
 		if mysql -e "USE $1; CREATE TABLE IF NOT EXISTS messages(msg_id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,uname VARCHAR(32) NOT NULL,timestamp TIMESTAMP NOT NULL,message TEXT(256) NOT NULL,PRIMARY KEY(msg_id));"; then
 			echo Przygotowano baze danych\!
 			exit 0
+		fi
 	else
 		echo Tworzenie uzytkownika zakonczone niepowodzeniem\!
 		exit 1

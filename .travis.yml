@@ -2,6 +2,10 @@ dist: xenial
 language: php
 php:
   - 7.0
+env:
+  - DB_PASSWD=adgjl0864264
+  - DB_USER=test_ci
+  - DB_NAME=ci_test
 services:
   - mysql
 script:
@@ -15,7 +19,3 @@ script:
 branches:
   only:
     - master
-env:
-  - DB_PASSWD=adgjl0864264
-  - DB_USER=test_ci
-  - DB_NAME=ci_test
