@@ -5,7 +5,7 @@ php:
 services:
   - mysql
 before_install:
-  - mysql -e "CREATE DATABASE IF NOT EXISTS test_ci;CREATE TABLE IF NOT EXISTS test_ci.messages;GRANT SELECT, ALTER, CREATE, UPDATE, INSERT, DELETE, DROP ON ci_test.* TO 'test_ci'@'localhost';FLUSH PRIVILEGES;"
+  - mysql -e "CREATE DATABASE IF NOT EXISTS test_ci;GRANT SELECT, ALTER, CREATE, UPDATE, INSERT, DELETE, DROP ON ci_test.* TO 'test_ci'@'localhost';FLUSH PRIVILEGES;"
   - mysql -e "USE test_ci; CREATE TABLE IF NOT EXISTS messages(msg_id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT ,uname VARCHAR(32) NOT NULL, timestamp TIMESTAMP NOT NULL,message TEXT(256) NOT NULL,PRIMARY KEY(msg_id));"
 script:
   - sudo apt-get install git -y
