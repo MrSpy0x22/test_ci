@@ -24,6 +24,6 @@ if mysql -e "CREATE TABLE IF NOT EXISTS $1;"; then
 else
 	echo Nie udalo sie utworzyc bazy danych\!
 	exit 1
-fi
+fi 
 
 exit 2
