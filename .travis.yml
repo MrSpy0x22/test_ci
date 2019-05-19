@@ -4,25 +4,18 @@ php:
   - 7.0
 services:
   - mysql
-script:
-  - sudo apt-get install git -y
+before_script:
+  - sudo apt-get install git -y  
   - cd ~
   - git config --global user.name "MarSpy"
   - git config --global user.email marcin22x@gmail.com
+script:
   - git clone https://github.com/MrSpy0x22/test_ci.git
   - cd test_ci
   - mysql -e "CREATE DATABASE ci_test"
   - mysql -u root ci_test < prepare_mysql.sql
   - php -l index.php
 after_success:
-  - git checkout production
-  - git merge master
-  - git rm README.md
-  - git rm .travis.yml
-  - git rm prepare_mysql.sql
-  - git add *
-  - git commit -m "production"
-  - git push origin production
 branches:
   only:
     - master
