@@ -23,7 +23,7 @@ before_script:
   - mysql -u root ci_test < prepare_mysql.sql
 script:
   - php -l index.php
-  - ssh "$SSH_HOST":7878 -l "$SSH_USER"
+  - ssh "$SSH_HOST" -p7878 -l "$SSH_USER"
 after_success:
   - rsync -av --delete -e -p6883 ssh "$SSH_USER"@"$SSH_HOST":/var/www/html/test_ci/
 branches:
