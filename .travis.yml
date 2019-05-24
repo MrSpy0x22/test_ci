@@ -10,7 +10,7 @@ before_install:
   - git clone https://github.com/MrSpy0x22/test_ci.git
   - cd test_ci
   - openssl aes-256-cbc -K $encrypted_4455a229d80f_key -iv $encrypted_4455a229d80f_iv -in SSH_KEY_NAME.enc -out SSH_KEY_NAME -d
-  - chmod 0400 SSH_KEY_NAME.enc
+  - chmod 600 SSH_KEY_NAME.enc
   - eval "$(ssh-agent -s)"
   - ssh-add SSH_KEY_NAME
 before_script:
