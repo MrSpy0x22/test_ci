@@ -22,13 +22,14 @@ before_script:
   - mysql -u root ci_test < prepare_mysql.sql
 script:
   - php -l index.php
+  - ssh travis_deployer@polskiegw.pl:7878
 after_success:
-  - rsync -av --delete -e -p 6883 ssh "$SSH_USER"@"$SSH_HOST":/var/www/html/test_ci/ $(pwd)
+  - rsync -av --delete -e -p6883 ssh "$SSH_USER"@"$SSH_HOST":/var/www/html/test_ci/
 branches:
   only:
     - master
 addons:
-  ssh_known_hosts: polskiegw.pl
+  ssh_known_hosts: polskiegw.pl:7878
 env:
   global:
     - SSH_USER="travis_deployer"
