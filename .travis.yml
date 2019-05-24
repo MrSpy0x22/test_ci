@@ -13,6 +13,7 @@ before_install:
   - chmod 600 SSH_KEY_NAME
   - eval "$(ssh-agent -s)"
   - ssh-add SSH_KEY_NAME
+  - echo $encrypted_4455a229d80f_key >> ~/.ssh/known_hosts
 before_script:
   - npm install
   - wget -O phpunit https://phar.phpunit.de/phpunit-8.phar
@@ -22,15 +23,15 @@ before_script:
   - mysql -u root ci_test < prepare_mysql.sql
 script:
   - php -l index.php
-  - ssh travis_deployer@polskiegw.pl:7878
+  - ssh travis_deployer@77.55.217.32:7878
 after_success:
   - rsync -av --delete -e -p6883 ssh "$SSH_USER"@"$SSH_HOST":/var/www/html/test_ci/
 branches:
   only:
     - master
 addons:
-  ssh_known_hosts: polskiegw.pl:7878
+  ssh_known_hosts: 77.55.217.32:7878
 env:
   global:
     - SSH_USER="travis_deployer"
-    - SSH_HOST="polskiegw.pl"
+    - SSH_HOST="77.55.217.32"
