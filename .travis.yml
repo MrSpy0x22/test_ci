@@ -1,19 +1,21 @@
 dist: xenial
 language: php
 php:
-  - 7.0
+  - 7.2
 services:
   - mysql
+install: php vendor/vendors.php
 before_script:
+  - wget -O phpunit https://phar.phpunit.de/phpunit-7.phar
+  - chmod +x phpunit
+  - ./phpunit --version
   - sudo apt-get install git -y  
   - cd ~
-  - git config --global user.name "MarSpy"
-  - git config --global user.email marcin22x@gmail.com
-script:
   - git clone https://github.com/MrSpy0x22/test_ci.git
   - cd test_ci
   - mysql -e "CREATE DATABASE ci_test"
   - mysql -u root ci_test < prepare_mysql.sql
+script:
   - php -l index.php
 after_success:
 branches:
