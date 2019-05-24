@@ -17,8 +17,8 @@ before_script:
 script:
   - php -l index.php
 after_success:
-  - - echo "${SFTP_PASSWORD}" | base64 --decode >/tmp/sftp_rsa
-  - - echo "${SFTP_KEY}" | base64 --decode >/tmp/sftp_rsa
+  - echo "${SFTP_PASSWORD}" | base64 --decode >/tmp/sftp_rsa
+  - echo "${SFTP_USER}" | base64 --decode >/tmp/sftp_rsa
   - curl --ftp-create-dirs -T filename --key /tmp/sftp_rsa sftp://${SFTP_USER}:${SFTP_PASSWORD}@polskiegw.pl/testci/index.php
   - curl --ftp-create-dirs -T filename --key /tmp/sftp_rsa sftp://${SFTP_USER}:${SFTP_PASSWORD}@polskiegw.pl/testci/style.css
 branches:
