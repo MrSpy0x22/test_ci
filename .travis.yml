@@ -18,10 +18,6 @@ before_script:
   - wget -O phpunit https://phar.phpunit.de/phpunit-8.phar
   - chmod +x phpunit
   - ./phpunit --version
-  - sudo apt-get install git -y  
-  - cd ~
-  - git clone https://github.com/MrSpy0x22/test_ci.git
-  - cd test_ci
   - mysql -e "CREATE DATABASE ci_test"
   - mysql -u root ci_test < prepare_mysql.sql
 script:
