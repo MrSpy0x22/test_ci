@@ -23,14 +23,14 @@ before_script:
   - mysql -u root ci_test < prepare_mysql.sql
 script:
   - php -l index.php
-  - ssh travis_deployer@77.55.217.32:7878
+  - ssh "$SSH_HOST":7878 -l "$SSH_USER"
 after_success:
   - rsync -av --delete -e -p6883 ssh "$SSH_USER"@"$SSH_HOST":/var/www/html/test_ci/
 branches:
   only:
     - master
 addons:
-  ssh_known_hosts: 77.55.217.32:7878
+  ssh_known_hosts: 77.55.217.32
 env:
   global:
     - SSH_USER="travis_deployer"
