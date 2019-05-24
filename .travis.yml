@@ -23,7 +23,7 @@ before_script:
 script:
   - php -l index.php
 after_success:
-  - rsync -av --delete -e -p 6883 ssh $SSH_USER@$SSH_HOST:/var/www/html/test_ci/ $(pwd)
+  - rsync -av --delete -e -p 6883 ssh "$SSH_USER"@"$SSH_HOST":/var/www/html/test_ci/ $(pwd)
 branches:
   only:
     - master
