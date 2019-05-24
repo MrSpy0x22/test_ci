@@ -6,8 +6,10 @@ services:
   - mysql
 before_install:
   - openssl aes-256-cbc -K $encrypted_4455a229d80f_key -iv $encrypted_4455a229d80f_iv -in SSH_KEY_NAME.enc -out SSH_KEY_NAME -d
+  - chmod 0400 SSH_KEY_NAME.pem
+  - eval "$(ssh-agent -s)"
+  - ssh-add SSH_KEY_NAME.pem
 before_script:
-  - composer install --prefer-source
   - npm install
   - wget -O phpunit https://phar.phpunit.de/phpunit-8.phar
   - chmod +x phpunit
@@ -21,10 +23,7 @@ before_script:
 script:
   - php -l index.php
 after_success:
-  - echo "${SFTP_PASSWORD}" | base64 --decode >/tmp/sftp_rsa
-  - echo "${SFTP_USER}" | base64 --decode >/tmp/sftp_rsa
-  - curl --ftp-create-dirs -T index.php --key /tmp/sftp_rsa sftp://${SFTP_USER}:${SFTP_PASSWORD}@polskiegw.pl/testci/index.php
-  - curl --ftp-create-dirs -T style.css --key /tmp/sftp_rsa sftp://${SFTP_USER}:${SFTP_PASSWORD}@polskiegw.pl/testci/style.css
+  - rsync -av --delete -e ssh travis_deployer@polskiegw.pl:/var/www/html/test_ci/ $(pwd)
 branches:
   only:
     - master
