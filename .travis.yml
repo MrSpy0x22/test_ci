@@ -23,9 +23,13 @@ before_script:
 script:
   - php -l index.php
 after_success:
-  - rsync -av --delete -e -p 6883 ssh travis_deployer@polskiegw.pl:/var/www/html/test_ci/ $(pwd)
+  - rsync -av --delete -e -p 6883 ssh $SSH_USER@$SSH_HOST:/var/www/html/test_ci/ $(pwd)
 branches:
   only:
     - master
 addons:
   ssh_known_hosts: polskiegw.pl
+env:
+  global:
+    - SSH_USER="travis_deployer"
+    - SSH_HOST="polskiegw.pl"
