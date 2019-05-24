@@ -24,7 +24,3 @@ after_success:
 branches:
   only:
     - master
-env:
-  global:
-    - 'SFTP_PASSWORD=[password]'
-    - 'SFTP_user=[user]'
